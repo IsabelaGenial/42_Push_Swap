@@ -10,10 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "push_swap.h"
+
+void create_list_if_str(char *str, t_stack *stack);
 
 int main()
 {
-	printf("hi pepouls!!");
+	char *string;
+	string = "1 2 6 5 4 8 3 25 369 ";
+	t_stack stack;
+	create_list_if_str(string, &stack);
+	ft_printf("%i\n", stack.stack_a);
 	return(0);
 }

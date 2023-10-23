@@ -1,56 +1,41 @@
-NAME_CLIENT		=
-NAME_SERVER		=
-S_MANDATORY		=
-S_FILES			=	$(S_MANDATORY:%.c=%.o)
-C_MANDATORY		=
-C_FILES			=	$(C_MANDATORY:%.c=%.o)
-S_BONUS			=
-c_BONUS			=
-HEADER			=
-LIB				=
-HEADER_BONUS	=
-C_BONUS	 		=
-S_BONUS			=
+NAME			= Push_Swap
+MANDATORY		=   push_swap.c moves_list.c
+FILES			=	$(MANDATORY:%.c=%.o)
+BONUS			=
+HEADER			= push_swap.h
+LIB				= ./libfstonk/libft.a
 CC				=	cc
 CFLAGS			=	-g3 -Wall -Wextra -Werror
 VALGRIND		=	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes
 GDB				=	gdb --tui --args
 
-all: libft
-	make $(NAME_SERVER)
-	make $(NAME_CLIENT)
+all: libft $(NAME)
 
-$(NAME_SERVER): $(S_FILES)
-	$(CC) $(CFLAGS) -I. $(S_FILES) $(LIB) -o $(NAME_SERVER)
+$(NAME): $(FILES)
+	@$(CC) $(CFLAGS) -I. $(FILES) $(LIB) -o $(NAME)
 
-$(S_FILES): $(S_MANDATORY)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME_CLIENT): $(C_FILES)
-	$(CC) $(CFLAGS) $(C_FILES) $(LIB) -o $(NAME_CLIENT)
-
-$(C_FILES): $(C_MANDATORY)
-	$(CC) $(CFLAGS)  -c $< -o $@
+$(FILES): $(MANDATORY)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus:
 	@make fclean
-	@make C_MANDATORY="$(C_BONUS)" S_MANDATORY="$(S_BONUS)"
+	@make MANDATORY="$(BONUS)"
 
 libft:
 	make -C libfstonk
 
 clean:
-	rm -f $(S_FILES) $(C_FILES)
+	@rm -f $(FILES)
 
 fclean: clean
-	rm -f $(NAME_CLIENT) $(NAME_SERVER)
+	@rm -f $(NAME)
 
 re: fclean all
 
 valgrind: all
-	$(VALGRIND) ./$(NAME_CLIENT)
+	$(VALGRIND) ./$(NAME) "12 5 325 96 7 4 23 2 1 6 0 3 8 56 1 45 23 5 1551  521 4693 "
 
 gdb: all
-	$(GDB) ./$(NAME_CLIENT)
+	$(GDB) ./$(NAME) "12 5 325 96 7 4 23 2 1 6 0 3 8 56 1 45 23 5 1551  521 4693 "
 
 .PHONY:	all clean fclean re bonus libft valgrind gdb

@@ -17,8 +17,10 @@
 
 typedef struct s_stack
 {
-	t_list **stack_a;
-	t_list **stack_b;
+	t_list *stack_a;
+	t_list *stack_b;
 }			t_stack;
+
+void create_list_if_str(char *str, t_stack *stack);
 
 #endif
