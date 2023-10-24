@@ -24,4 +24,3 @@ void create_list_if_str(char *str, t_stack *stack)
 		ft_lstadd_back(&stack->stack_a, ft_lstnew(ft_atoi(*(++split_str))));
 	}
 }
-

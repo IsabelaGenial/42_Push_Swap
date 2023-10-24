@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-void create_list_if_str(char *str, t_stack *stack);
-
 int main()
 {
 	char *string;
