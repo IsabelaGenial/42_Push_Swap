@@ -12,12 +12,13 @@
 
 #include "push_swap.h"
 
-int main()
+int main(int argc, char **arg )
 {
-	char *string;
-	string = "1 2 6 5 4 8 3 25 369 ";
 	t_stack stack;
-	create_list_if_str(string, &stack);
-	ft_printf("%i\n", stack.stack_a);
+	
+	if (argc < 6) {
+		return (ft_printf("error\n"));
+	}
+	create_list_if_str(&stack, arg);
 	return(0);
 }

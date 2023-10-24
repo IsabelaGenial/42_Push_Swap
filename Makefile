@@ -1,5 +1,5 @@
 NAME			= Push_Swap
-MANDATORY		=   push_swap.c moves_list.c
+MANDATORY		=   push_swap.c moves_list.c DCLL_Function.c
 FILES			=	$(MANDATORY:%.c=%.o)
 BONUS			=
 HEADER			= push_swap.h
@@ -14,7 +14,7 @@ all: libft $(NAME)
 $(NAME): $(FILES)
 	@$(CC) $(CFLAGS) -I. $(FILES) $(LIB) -o $(NAME)
 
-$(FILES): $(MANDATORY)
+%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus:
@@ -33,9 +33,9 @@ fclean: clean
 re: fclean all
 
 valgrind: all
-	$(VALGRIND) ./$(NAME) "12 5 325 96 7 4 23 2 1 6 0 3 8 56 1 45 23 5 1551  521 4693 "
+	$(VALGRIND) ./$(NAME) 12 325 96 7 4 2 6 0 3 8 56 1 45 23 5 1551 521 4693
 
 gdb: all
-	$(GDB) ./$(NAME) "12 5 325 96 7 4 23 2 1 6 0 3 8 56 1 45 23 5 1551  521 4693 "
+	$(GDB) ./$(NAME) 12 325 96 7 4 2 6 0 3 8 56 1 45 23 5 1551 521 4693
 
 .PHONY:	all clean fclean re bonus libft valgrind gdb

@@ -12,15 +12,17 @@
 
 #include "push_swap.h"
 
-void create_list_if_str(char *str, t_stack *stack)
+void create_list_if_str(t_stack *stack, char **args)
 {
-	char **split_str;
+	int i;
+	t_node node;
+	int content;
 
-	split_str = ft_split(str,' ');
-	stack->stack_a->content = ft_atoi(split_str[0]);
-	while (*split_str)
+	i = 1;
+	while (args[i])
 	{
-		free(*split_str);
-		ft_lstadd_back(&stack->stack_a, ft_lstnew(ft_atoi(*(++split_str))));
+		content = ft_atoi(args[i++]);
+		node = *DCLL_lstnew(content);
+		DCLL_lst_add_back(stack->stack_a, &node);
 	}
 }
