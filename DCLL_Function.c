@@ -12,30 +12,32 @@
 
 #include "push_swap.h"
 
-void DCLL_lst_add_back(t_node *old, t_node *yong)
+void DCLL_lst_add_back( t_node *yong, t_stack *stack)
 {
-	t_node *last;
-
-	if (old == NULL)
-		*old = *yong;
+	if (stack->stack_a == NULL)
+	{
+		stack->stack_a = yong;
+		stack->stack_a->next = yong;
+		stack->stack_a->prev = yong;
+	}
 	else
 	{
-		last = DCLL_lst_last(old);
-		last -> next = yong;
-		last = last->next;
-		last->prev = old;
+		stack->tail = DCLL_lst_last(stack->stack_a, stack);
+		yong->next= stack->head;
+		stack->tail->next = yong;
+		yong->prev = stack->tail;
 	}
 }
 
-t_node	*DCLL_lst_last(t_node *list)
+t_node	*DCLL_lst_last(t_node *list, t_stack *stack)
 {
-	t_node *start;
-
 	if (list->next == NULL)
 		return (list);
-	start = list;
-	while (list->next == start)
+	stack->head = list;
+	while (list->next != stack->head)
+	{
 		list = list->next;
+	}
 	return (list);
 }
 
