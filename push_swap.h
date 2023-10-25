@@ -26,11 +26,15 @@ typedef struct s_stack
 {
 	t_node *stack_a;
 	t_node *stack_b;
+	t_node *head;
+	t_node *tail;
+	int len;
 }			t_stack;
 
-void	create_list_if_str(t_stack *stack, char **args);
-void DCLL_lst_add_back(t_node *old, t_node *yong);
-t_node	*DCLL_lst_last(t_node *list);
-t_node	*DCLL_lstnew(int content);
 
+
+void	create_list_if_str(t_stack *stack, char **args);
+t_node	*DCLL_lst_last(t_node *list, t_stack *stack);
+t_node	*DCLL_lstnew(int content);
+void DCLL_lst_add_back( t_node *yong, t_stack *stack);
 #endif
