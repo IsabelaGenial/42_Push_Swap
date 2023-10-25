@@ -14,11 +14,17 @@
 
 int main(int argc, char **arg )
 {
-	t_stack stack;
-	
+	t_stack *stack;
+
 	if (argc < 6) {
 		return (ft_printf("error\n"));
 	}
-	create_list_if_str(&stack, arg);
+	stack = ft_calloc(1, sizeof(t_stack));
+	create_list_if_str(stack, arg);
+	while (argc-- >= 2)
+	{
+		ft_printf("%i\n", stack->stack_a->content);
+		stack->stack_a = stack->stack_a->next;
+	}
 	return(0);
 }
