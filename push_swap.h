@@ -36,5 +36,8 @@ typedef struct s_stack
 void	create_list_if_str(t_stack *stack, char **args);
 t_node	*DCLL_lst_last(t_node *list, t_stack *stack);
 t_node	*DCLL_lstnew(int content);
-void DCLL_lst_add_back( t_node *yong, t_stack *stack);
+void	DCLL_lst_add_back( t_node *yong, t_stack *stack);
+void	RRA_DCLL_list(t_stack *stack);
+void	RA_DCLL_list(t_stack *stack);
+void	SA_DCLL_list(t_stack *stack);
 #endif
