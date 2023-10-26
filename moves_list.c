@@ -27,3 +27,29 @@ void create_list_if_str(t_stack *stack, char **args)
 	}
 }
 
+void RRA_DCLL_list(t_stack *stack)
+{
+	stack -> head = stack -> tail;
+	stack -> tail = stack -> tail -> prev;
+}
+
+void RA_DCLL_list(t_stack *stack)
+{
+	stack -> tail = stack -> head;
+	stack -> head = stack -> head -> next;
+}
+
+void SA_DCLL_list(t_stack *stack)
+{
+	t_node *temp;
+	t_node *temp2;
+
+	temp = stack->head;
+	stack->head = stack->head->next;
+	temp2 = stack->head->next;
+	temp2->prev = temp;
+	temp->next = stack->head->next;
+	temp->prev = stack->head;
+	stack->head->next = temp;
+	stack->head->prev = stack->tail;
+}
