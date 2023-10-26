@@ -26,3 +26,4 @@ void create_list_if_str(t_stack *stack, char **args)
 		DCLL_lst_add_back(node, stack);
 	}
 }
+
