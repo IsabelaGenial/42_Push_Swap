@@ -15,6 +15,7 @@
 int main(int argc, char **arg )
 {
 	t_stack *stack;
+
 	int len = argc;
 
 	if (argc < 6) {
@@ -22,16 +23,24 @@ int main(int argc, char **arg )
 	}
 	stack = ft_calloc(1, sizeof(t_stack));
 	create_list_if_str(stack, arg);
+	t_node *start_tail = stack->tail;
+	t_node *start_head = stack->head;
 	while (len-- >= 2)
 	{
-		ft_printf("%i\n", stack->stack_a->content);
-		stack->stack_a = stack->stack_a->next;
+		ft_printf("%i | %i\n", start_head->content,  start_tail->content);
+		start_tail = start_tail->prev;
+		start_head = start_head->next;
 	}
+	SA_DCLL_list(stack);
+	start_tail = stack->tail;
+	start_head = stack->head;
 	len = argc;
 	while (len-- >= 2)
 	{
-		ft_printf("%i\n", stack->stack_a->content);
-		stack->stack_a = stack->stack_a->prev;
+		ft_printf("*%i | %i\n", start_head->content,  start_tail->content);
+		start_tail = start_tail->prev;
+		start_head = start_head->next;
 	}
+
 	return(0);
 }
