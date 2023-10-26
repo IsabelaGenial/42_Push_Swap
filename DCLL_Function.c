@@ -26,6 +26,7 @@ void DCLL_lst_add_back( t_node *yong, t_stack *stack)
 		stack->tail->next = yong;
 		yong->prev = stack->tail;
 		stack->head->prev = yong;
+		stack->tail = yong;
 	}
 }
 
