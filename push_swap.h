@@ -24,20 +24,24 @@ typedef struct s_node
 
 typedef struct s_stack
 {
-	t_node *stack_a;
-	t_node *stack_b;
-	t_node *head;
-	t_node *tail;
-	int len;
-}			t_stack;
+    t_node  *stack;
+    t_node  *head;
+    t_node  *tail;
+}           t_stack;
 
+typedef struct s_main
+{
+	t_stack     *A;
+    t_stack     *B;
+	int         len;
+}			t_main;
 
-
-void	create_list_if_str(t_stack *stack, char **args);
-t_node	*DCLL_lst_last(t_node *list, t_stack *stack);
+void	create_list_if_str(t_main *stack, char **args);
+t_node	*DCLL_lst_last(t_node *list, t_main *stack);
 t_node	*DCLL_lstnew(int content);
-void	DCLL_lst_add_back( t_node *yong, t_stack *stack);
-void	RRA_DCLL_list(t_stack *stack);
-void	RA_DCLL_list(t_stack *stack);
-void	SA_DCLL_list(t_stack *stack);
+void	DCLL_lst_add_back( t_node *yong, t_main *stack);
+void	RRA_DCLL_list(t_main *stack);
+void	RA_DCLL_list(t_main *stack);
+void	SA_DCLL_list(t_main *stack);
+void    PB_DCLL_list(t_main *stack);
 #endif
