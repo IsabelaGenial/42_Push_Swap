@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void create_list_if_str(t_stack *stack, char **args)
+void create_list_if_str(t_main *stack, char **args)
 {
 	int i;
 	t_node *node;
@@ -27,29 +27,29 @@ void create_list_if_str(t_stack *stack, char **args)
 	}
 }
 
-void RRA_DCLL_list(t_stack *stack)
+void RRA_DCLL_list(t_main *stack)
 {
-	stack -> head = stack -> tail;
-	stack -> tail = stack -> tail -> prev;
+	stack->A->head = stack->A->tail;
+	stack->A->tail = stack->A->tail->prev;
 }
 
-void RA_DCLL_list(t_stack *stack)
+void RA_DCLL_list(t_main *stack)
 {
-	stack -> tail = stack -> head;
-	stack -> head = stack -> head -> next;
+	stack->A->tail = stack->A->head;
+	stack->A->head = stack->A->head->next;
 }
 
-void SA_DCLL_list(t_stack *stack)
+void SA_DCLL_list(t_main *stack)
 {
 	t_node *temp;
 	t_node *temp2;
 
-	temp = stack->head;
-	stack->head = stack->head->next;
-	temp2 = stack->head->next;
+	temp = stack->A->head;
+	stack->A->head = stack->A->head->next;
+	temp2 = stack->A->head->next;
 	temp2->prev = temp;
-	temp->next = stack->head->next;
-	temp->prev = stack->head;
-	stack->head->next = temp;
-	stack->head->prev = stack->tail;
+	temp->next = stack->A->head->next;
+	temp->prev = stack->A->head;
+	stack->A->head->next = temp;
+	stack->A->head->prev = stack->A->tail;
 }
