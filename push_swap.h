@@ -34,6 +34,7 @@ typedef struct s_main
 	t_stack     *A;
     t_stack     *B;
 	int         len;
+    int         pivot;
 }			t_main;
 
 void	create_list_if_str(t_main *stack, char **args);
@@ -43,5 +44,9 @@ void	DCLL_lst_add_back( t_node *yong, t_main *stack);
 void	RRA_DCLL_list(t_main *stack);
 void	RA_DCLL_list(t_main *stack);
 void	SA_DCLL_list(t_main *stack);
+void    PA_DCLL_list(t_main *stack);
 void    PB_DCLL_list(t_main *stack);
+void    RRB_DCLL_list(t_main *stack);
+void    RB_DCLL_list(t_main *stack);
+void    SB_DCLL_list(t_main *stack);
 #endif
