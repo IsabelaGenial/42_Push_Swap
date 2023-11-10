@@ -31,12 +31,14 @@ void RRA_DCLL_list(t_main *stack)
 {
 	stack->A->head = stack->A->tail;
 	stack->A->tail = stack->A->tail->prev;
+    ft_printf("rra");
 }
 
 void RA_DCLL_list(t_main *stack)
 {
 	stack->A->tail = stack->A->head;
 	stack->A->head = stack->A->head->next;
+    ft_printf("ra");
 }
 
 void SA_DCLL_list(t_main *stack)
@@ -52,4 +54,32 @@ void SA_DCLL_list(t_main *stack)
 	temp->prev = stack->A->head;
 	stack->A->head->next = temp;
 	stack->A->head->prev = stack->A->tail;
+    ft_printf("sa");
+}
+
+void PA_DCLL_list(t_main *stack)
+{
+    t_node *temp;
+    temp = stack->A->head;
+    if (stack->B->head == NULL)
+    {
+        stack->A->head = stack->A->head->next;
+        stack->A->head->prev = stack->A->tail;
+        stack->A->tail->next = stack->A->head;
+        stack->B->head = temp;
+        stack->B->head->next = stack->B->head;
+        stack->B->head->prev = stack->B->head;
+    }
+    else
+    {
+        stack->A->head = stack->A->head->next;
+        stack->A->head->prev = stack->A->tail;
+        stack->A->tail->next = stack->A->head;
+        stack->B->tail = stack->B->head->prev;
+        temp->next = stack->B->head;
+        temp->prev = stack->B->tail;
+        stack->B->tail->next = temp;
+        stack->B->head->prev = temp;
+        stack->B->head = temp;
+    }
 }
