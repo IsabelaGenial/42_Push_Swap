@@ -34,7 +34,7 @@ void RRB_DCLL_list(t_main *stack)
 }
 
 void RB_DCLL_list(t_main *stack)
-
+{
     stack->B->tail = stack->B->head;
     stack->B->head = stack->B->head->next;
 }
