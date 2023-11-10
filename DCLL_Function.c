@@ -53,3 +53,16 @@ t_node	*DCLL_lstnew(int content)
 	node->prev = NULL;
 	return (node);
 }
+
+int	ft_lstsize(t_node *lst, t_node *head)
+{
+    int	i;
+
+    i = 0;
+    while (lst->next != head)
+    {
+        lst = lst->next;
+        i++;
+    }
+    return (i);
+}
