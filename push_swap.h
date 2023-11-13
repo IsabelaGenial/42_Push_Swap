@@ -49,4 +49,11 @@ void    PB_DCLL_list(t_main *stack);
 void    RRB_DCLL_list(t_main *stack);
 void    RB_DCLL_list(t_main *stack);
 void    SB_DCLL_list(t_main *stack);
+int     is_sorted(t_main *stack);
+void    sorted_two(t_main *stack);
+int     find_content_min(t_main *stack);
+int     find_content_max(t_main *stack);
+void    sorted_three(t_main *stack);
+void    sorted_five(t_main *stack);
+void    sorted_four(t_main *stack);
 #endif
