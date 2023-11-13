@@ -54,7 +54,7 @@ t_node	*DCLL_lstnew(int content)
 	return (node);
 }
 
-int	ft_lstsize(t_node *lst, t_node *head)
+int	lstsize(t_node *lst, t_node *head)
 {
     int	i;
 
