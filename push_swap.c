@@ -31,22 +31,23 @@ int     main(int argc, char **arg )
 {
 	t_main *stack;
 
-	if (argc < 3) {
-		return (ft_printf("error\n"));
+	if (argc < 3 || !is_not_digit(arg))
+    {
+        write(2, "Error\n", 6);
+        return (1);
 	}
-	stack = ft_calloc(1, sizeof(t_main));
-    stack->A = ft_calloc(1, sizeof(t_stack));
-    stack->B = ft_calloc(1, sizeof(t_stack));
+    stack = ft_calloc(1, sizeof(t_main));
+    calloc_stack(stack);
     stack->len = (argc - 1);
 	create_list_if_str(stack, arg);
-    if(!is_sorted(stack))
-        return(ft_printf("sorted!\n"));
-    if ((argc - 1) < 4)
-        sorted_three(stack);
-    else if (argc - 1 == 4)
-        sorted_four(stack);
-    if(!is_sorted(stack))
-        ft_printf("sorted!\n");
     print_stack(stack);
+    if(is_sorted(stack) || is_duplicates(stack))
+    {
+        free_main(stack);
+        write(2, "Error\n", 6);
+        return(1);
+    }
+    print_stack(stack);
+    free_main(stack);
     return(0);
 }

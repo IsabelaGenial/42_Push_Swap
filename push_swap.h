@@ -51,9 +51,13 @@ void    RB_DCLL_list(t_main *stack);
 void    SB_DCLL_list(t_main *stack);
 int     is_sorted(t_main *stack);
 void    sorted_two(t_main *stack);
-int     find_content_min(t_main *stack);
-int     find_content_max(t_main *stack);
+int     find_position_min(t_main *stack);
+int     find_position_max(t_main *stack);
 void    sorted_three(t_main *stack);
 void    sorted_five(t_main *stack);
 void    sorted_four(t_main *stack);
+void    free_main(t_main *stack);
+void    calloc_stack(t_main *stack);
+int     is_not_digit(char **c);
+int     is_duplicates(t_main *stack);
 #endif
