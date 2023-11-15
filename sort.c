@@ -1,74 +1,95 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/14 23:22:53 by igenial           #+#    #+#             */
+/*   Updated: 2023/11/14 23:22:54 by igenial          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-
-
-void sorted_two(t_main *stack)
+void	aux_five(t_main *stack, int pos)
 {
-    t_node *temp;
-
-    temp = stack->A->head->next;
-    if (stack->A->head->content > temp->content)
-        SA_DCLL_list(stack);
+	if (pos == 5)
+		rra_dcll_list(stack);
+	else if (pos == 4)
+	{
+		rra_dcll_list(stack);
+		rra_dcll_list(stack);
+	}
+	else if (pos == 3)
+	{
+		rra_dcll_list(stack);
+		rra_dcll_list(stack);
+		rra_dcll_list(stack);
+	}
+	else if (pos == 2)
+		sa_dcll_list(stack);
 }
 
-void sorted_three(t_main *stack)
+void	sorted_two(t_main *stack)
 {
-    int pos;
+	t_node	*temp;
 
-    pos = find_position_max(stack);
-    if (pos == 1)
-        RA_DCLL_list(stack);
-    if (pos == 2)
-        RRA_DCLL_list(stack);
-    sorted_two(stack);
+	temp = stack->a->head->next;
+	if (stack->a->head->content > temp->content)
+		sa_dcll_list(stack);
 }
 
-void sorted_four(t_main *stack)
+void	sorted_three(t_main *stack)
 {
-    int pos;
+	int	pos;
 
-    pos = find_position_min(stack);
-    if (stack->len == 4)
-    {
-        if (pos == 4)
-            RRA_DCLL_list(stack);
-        else if (pos == 3) {
-            RRA_DCLL_list(stack);
-            RRA_DCLL_list(stack);
-        } else if (pos == 2)
-            SA_DCLL_list(stack);
-        PB_DCLL_list(stack);
-        stack->len -= 1;
-        sorted_three(stack);
-        PA_DCLL_list(stack);
-        stack->len += 1;
-    }
-    sorted_three(stack);
+	pos = find_position_max(stack);
+	if (pos == 1)
+		ra_dcll_list(stack);
+	if (pos == 2)
+		rra_dcll_list(stack);
+	sorted_two(stack);
 }
 
-void sorted_five(t_main *stack)
+void	sorted_four(t_main *stack)
 {
-    int pos;
+	int	pos;
 
-    if (stack->len == 5)
-    {
-        pos = find_position_min(stack);
-        if (pos == 5)
-            RRA_DCLL_list(stack);
-        else if (pos == 4) {
-            RRA_DCLL_list(stack);
-            RRA_DCLL_list(stack);
-        } else if (pos == 3) {
-            RRA_DCLL_list(stack);
-            RRA_DCLL_list(stack);
-            RRA_DCLL_list(stack);
-        } else if (pos == 2)
-            SA_DCLL_list(stack);
-        PB_DCLL_list(stack);
-        stack->len -= 1;
-        sorted_four(stack);
-        PA_DCLL_list(stack);
-        stack->len += 1;
-    }
-    sorted_four(stack);
+	pos = find_position_min(stack);
+	if (stack->len == 4)
+	{
+		if (pos == 4)
+			rra_dcll_list(stack);
+		else if (pos == 3)
+		{
+			rra_dcll_list(stack);
+			rra_dcll_list(stack);
+		}
+		else if (pos == 2)
+			sa_dcll_list(stack);
+		pb_dcll_list(stack);
+		stack->len -= 1;
+		sorted_three(stack);
+		pa_dcll_list(stack);
+		stack->len += 1;
+	}
+	sorted_three(stack);
+}
+
+void	sorted_five(t_main *stack)
+{
+	int	pos;
+
+	if (stack->len == 5)
+	{
+		pos = find_position_min(stack);
+		aux_five(stack, pos);
+		pb_dcll_list(stack);
+		stack->len -= 1;
+		sorted_four(stack);
+		pa_dcll_list(stack);
+	stack->len += 1;
+	}
+	sorted_four(stack);
 }

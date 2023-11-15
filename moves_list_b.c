@@ -1,55 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves_list_b.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/14 23:02:27 by igenial           #+#    #+#             */
+/*   Updated: 2023/11/14 23:02:28 by igenial          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void PB_DCLL_list(t_main *stack)
+void	pb_dcll_list(t_main *stack)
 {
-    t_node *temp;
-    temp = stack->A->head;
-    if (stack->B->head == NULL)
-    {
-        stack->A->head = stack->A->head->next;;
-        stack->A->tail->next = stack->A->head;
-		stack->A->head->prev = stack->A->tail;
-        stack->B->head = temp;
-		stack->B->head->next = stack->B->tail;
-        ft_printf("pb\n");
-    }
-    else
-    {
-        stack->A->head = stack->A->head->next;
-        stack->A->head->prev = stack->A->tail;
-        stack->A->tail->next = stack->A->head;
-        temp->next = stack->B->head;
-        stack->B->head->prev = temp;
-        stack->B->head = temp;
-        stack->B->stack = stack->B->head;
-        ft_printf("pb\n");
-    }
+	t_node	*temp;
+
+	temp = stack->a->head;
+	if (stack->b->head == NULL)
+	{
+		stack->a->head = stack->a->head->next;
+		stack->a->tail->next = stack->a->head;
+		stack->a->head->prev = stack->a->tail;
+		stack->b->head = temp;
+		stack->b->head->next = stack->b->tail;
+		ft_printf("pb\n");
+	}
+	else
+	{
+		stack->a->head = stack->a->head->next;
+		stack->a->head->prev = stack->a->tail;
+		stack->a->tail->next = stack->a->head;
+		temp->next = stack->b->head;
+		stack->b->head->prev = temp;
+		stack->b->head = temp;
+		stack->b->stack = stack->b->head;
+		ft_printf("pb\n");
+	}
 }
 
-void RRB_DCLL_list(t_main *stack)
+void	rrb_dcll_list(t_main *stack)
 {
-    stack->B->head = stack->B->tail;
-    stack->B->tail = stack->B->tail->prev;
-    stack->B->stack = stack->B->head;
-    ft_printf("rrb\n");
+	stack->b->head = stack->b->tail;
+	stack->b->tail = stack->b->tail->prev;
+	stack->b->stack = stack->b->head;
+	ft_printf("rrb\n");
 }
 
-void RB_DCLL_list(t_main *stack)
+void	rb_dcll_list(t_main *stack)
 {
-    stack->B->tail = stack->B->head;
-    stack->B->head = stack->B->head->next;
-    stack->B->stack = stack->B->head;
-    ft_printf("rb\n");
+	stack->b->tail = stack->b->head;
+	stack->b->head = stack->b->head->next;
+	stack->b->stack = stack->b->head;
+	ft_printf("rb\n");
 }
 
-void SB_DCLL_list(t_main *stack)
+void	sb_dcll_list(t_main *stack)
 {
-    int a;
+	int	a;
 
-    a = stack->B->head->content;
-    stack->B->head->content = stack->B->head->next->content;
-    stack->B->head->next->content = a;
-    ft_printf("sb\n");
+	a = stack->b->head->content;
+	stack->b->head->content = stack->b->head->next->content;
+	stack->b->head->next->content = a;
+	ft_printf("sb\n");
 }
 
 void	check_overflow(int argc, char **arg)

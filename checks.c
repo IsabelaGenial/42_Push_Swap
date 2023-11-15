@@ -1,95 +1,100 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checks.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/14 22:50:42 by igenial           #+#    #+#             */
+/*   Updated: 2023/11/14 23:09:35 by igenial          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int is_sorted(t_main *stack)
+#include "push_swap.h"
+
+int	is_sorted(char **args)
 {
-    int i;
-    t_node *temp;
+	int		i;
 
-    temp = stack->A->head;
-    if (stack->B->head == NULL)
-    {
-        i = 1;
-        while (i < stack->len)
-        {
-            if (temp->content > temp->next->content)
-                return (1);
-            temp = temp->next;
-            i++;
-        }
-    }
-    return (0);
+	i = 1;
+	while (args[i + 1] != NULL)
+	{
+		if (ft_atoi(args[i]) > ft_atoi(args[i + 1]))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-int    find_position_max(t_main *stack)
+int	find_position_max(t_main *stack)
 {
-    t_node *major;
-    int     pos;
-    int     i;
+	t_node	*major;
+	int		pos;
+	int		i;
 
-    i = 1;
-    pos = 1;
-    major = stack->A->head;
-    stack->A->stack = stack->A->head;
-    while (i <= stack->len)
-    {
-        if (major->content < stack->A->stack->content)
-        {
-            major = stack->A->stack;
-            pos = i;
-        }
-        stack->A->stack = stack->A->stack->next;
-        i++;
-    }
-    stack->A->stack = stack->A->head;
-    return (pos);
+	i = 1;
+	pos = 1;
+	major = stack->a->head;
+	stack->a->stack = stack->a->head;
+	while (i <= stack->len)
+	{
+		if (major->content < stack->a->stack->content)
+		{
+			major = stack->a->stack;
+			pos++;
+		}
+		stack->a->stack = stack->a->stack->next;
+		i++;
+	}
+	stack->a->stack = stack->a->head;
+	return (pos);
 }
 
-int    find_position_min(t_main *stack)
+int	find_position_min(t_main *stack)
 {
-    t_node *major;
-    int     pos;
-    int     i;
+	t_node		*major;
+	int			pos;
+	int			i;
 
-    i = 1;
-    pos = 1;
-    major = stack->A->head;
-    stack->A->stack = stack->A->head;
-    while (i <= stack->len)
-    {
-        if (major->content > stack->A->stack->content)
-        {
-            major = stack->A->stack;
-            pos = i;
-        }
-        stack->A->stack = stack->A->stack->next;
-        i++;
-    }
-    stack->A->stack = stack->A->head;
-    return (pos);
+	i = 1;
+	pos = 1;
+	major = stack->a->head;
+	stack->a->stack = stack->a->head;
+	while (i <= stack->len)
+	{
+		if (major->content > stack->a->stack->content)
+		{
+			major = stack->a->stack;
+			pos++;
+		}
+		stack->a->stack = stack->a->stack->next;
+		i++;
+	}
+	stack->a->stack = stack->a->head;
+	return (pos);
 }
 
-int is_not_digit(char **c)
+int	is_not_digit(char **c)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 1;
-    while(c[i] != NULL)
-    {
-        j = 0;
-		while(c[i][j] != '\0')
-        {
+	i = 1;
+	while (c[i] != NULL)
+	{
+		j = 0;
+		while (c[i][j] != '\0')
+		{
 			if (j == 0 && c[i][j] == '-' && c[i][j++] == '\0')
-				return(1);
+				return (1);
 			if (ft_isdigit(c[i][j]))
-				return(1);
+				return (1);
 			j++;
-        }
-        i++;
-    }
-    return (0);
+		}
+		i++;
+	}
+	return (0);
 }
-
 
 void	check_duplicated(int argc, char **arg)
 {

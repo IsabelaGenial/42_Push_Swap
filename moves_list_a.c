@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_list.c                                       :+:      :+:    :+:   */
+/*   moves_list_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,70 +12,68 @@
 
 #include "push_swap.h"
 
-void create_list_if_str(t_main *stack, char **args)
+void	create_list_if_str(t_main *stack, char **args)
 {
-	int i;
-	t_node *node;
-	int content;
+	int		i;
+	t_node	*node;
+	int		content;
 
 	i = 1;
 	while (args[i])
 	{
 		content = ft_atoi(args[i++]);
-		node = DCLL_lstnew(content);
-		DCLL_lst_add_back(node, stack);
+		node = dcll_lstnew(content);
+		dcll_lst_add_back(node, stack);
 	}
 }
 
-void RRA_DCLL_list(t_main *stack)
+void	rra_dcll_list(t_main *stack)
 {
-	stack->A->head = stack->A->tail;
-	stack->A->tail = stack->A->tail->prev;
-    stack->A->stack = stack->A->head;
-    ft_printf("rra\n");
+	stack->a->head = stack->a->tail;
+	stack->a->tail = stack->a->tail->prev;
+	stack->a->stack = stack->a->head;
+	ft_printf("rra\n");
 }
 
-void RA_DCLL_list(t_main *stack)
+void	ra_dcll_list(t_main *stack)
 {
-	stack->A->tail = stack->A->head;
-	stack->A->head = stack->A->head->next;
-    ft_printf("ra\n");
+	stack->a->tail = stack->a->head;
+	stack->a->head = stack->a->head->next;
+	ft_printf("ra\n");
 }
 
-void PA_DCLL_list(t_main *stack)
+void	pa_dcll_list(t_main *stack)
 {
-    t_node *temp;
-    temp = stack->B->head;
+	t_node	*temp;
 
-	if(stack->B->head == NULL)
+	temp = stack->b->head;
+	if (stack->b->head == NULL)
 	{
-		return;
-		temp->next = stack->A->head;
-		temp->prev = stack->A->tail;
-		stack->A->head->prev = temp;
-		stack->A->tail->next = temp;
-		stack->A->head = temp;
-		stack->A->stack = stack->A->head;
-		stack->B = NULL;
-
+		return ;
+		temp->next = stack->a->head;
+		temp->prev = stack->a->tail;
+		stack->a->head->prev = temp;
+		stack->a->tail->next = temp;
+		stack->a->head = temp;
+		stack->a->stack = stack->a->head;
+		stack->b = NULL;
 	}
-	stack->B->head = stack->B->head->next;
-	temp->next = stack->A->head;
-	temp->prev = stack->A->tail;
-	stack->A->head->prev = temp;
-	stack->A->tail->next = temp;
-	stack->A->head = temp;
-	stack->A->stack = stack->A->head;
-
-    ft_printf("pa\n");
+	stack->b->head = stack->b->head->next;
+	temp->next = stack->a->head;
+	temp->prev = stack->a->tail;
+	stack->a->head->prev = temp;
+	stack->a->tail->next = temp;
+	stack->a->head = temp;
+	stack->a->stack = stack->a->head;
+	ft_printf("pa\n");
 }
 
-void SA_DCLL_list(t_main *stack)
+void	sa_dcll_list(t_main *stack)
 {
-    int a;
+	int	a;
 
-    a = stack->A->head->content;
-    stack->A->head->content = stack->A->head->next->content;
-    stack->A->head->next->content = a;
-    ft_printf("sa\n");
+	a = stack->a->head->content;
+	stack->a->head->content = stack->a->head->next->content;
+	stack->a->head->next->content = a;
+	ft_printf("sa\n");
 }
