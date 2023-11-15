@@ -1,5 +1,5 @@
 NAME			= Push_Swap
-MANDATORY		=   push_swap.c moves_list_a.c DCLL_Function.c moves_list_b.c checks.c sort.c free.c
+MANDATORY		=   push_swap.c moves_list_a.c DCLL_Function.c moves_list_b.c checks.c sort.c free.c Radix_Sort.c
 FILES			=	$(MANDATORY:%.c=%.o)
 BONUS			=
 HEADER			= push_swap.h

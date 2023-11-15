@@ -1,5 +1,7 @@
 #include "push_swap.h"
 
+
+
 void sorted_two(t_main *stack)
 {
     t_node *temp;

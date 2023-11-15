@@ -73,36 +73,39 @@ int is_not_digit(char **c)
     int i;
     int j;
 
-    i = 0;
+    i = 1;
     while(c[i] != NULL)
     {
         j = 0;
-        while(c[i][j] != '\0')
+		while(c[i][j] != '\0')
         {
-            if (!ft_isdigit(c[i][j]))
-                return(1);
-            j++;
+			if (j == 0 && c[i][j] == '-' && c[i][j++] == '\0')
+				return(1);
+			if (ft_isdigit(c[i][j]))
+				return(1);
+			j++;
         }
         i++;
     }
     return (0);
 }
 
-int is_duplicates(t_main *stack)
-{
-    t_node *aux;
 
-    stack->A->stack = stack->A->head;
-    while(stack->A->stack != stack->A->head)
-    {
-        aux = stack->A->stack->next;
-        while(aux != stack->A->head)
-        {
-            if(stack->A->stack->content == aux->content)
-                return (1);
-            aux = aux->next;
-        }
-        stack->A->stack = stack->A->stack->next;
-    }
-    return (0);
+void	check_duplicated(int argc, char **arg)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < argc)
+	{
+		j = i + 1;
+		while (j < argc)
+		{
+			if (i != j && (ft_atoi(arg[i]) == ft_atoi(arg[j])))
+				exit(write(2, "Error\n", 6));
+			j++;
+		}
+		i++;
+	}
 }

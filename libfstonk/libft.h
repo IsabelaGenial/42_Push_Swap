@@ -77,5 +77,6 @@ char	*get_next_line(int fd);
 int		ft_putptr(unsigned long nb);
 int		ft_puthex(unsigned int nb, char x);
 int		ft_printf(const char *print, ...);
+long	ft_atol(const char *nptr);
 
 #endif

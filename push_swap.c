@@ -12,41 +12,27 @@
 
 #include "push_swap.h"
 
-void print_stack(t_main *stack)
-{
-    int i;
-
-    i = 0;
-    t_node *aux;
-    aux = stack->A->head;
-    while (i < stack->len)
-    {
-        ft_printf("\n%i°: %i\n", i, aux->content);
-        i++;
-        aux = aux->next;
-    }
-}
-
 int     main(int argc, char **arg )
 {
 	t_main *stack;
 
-	if (argc < 3 || !is_not_digit(arg))
+	if (argc < 3 || is_not_digit(arg))
     {
-        write(2, "Error\n", 6);
-        return (1);
+		write(2, "Error\n", 6);
+		return (1);
 	}
-    stack = ft_calloc(1, sizeof(t_main));
-    calloc_stack(stack);
-    stack->len = (argc - 1);
+	check_overflow(argc,arg);
+	check_duplicated(argc,arg);
+	stack = ft_calloc(1, sizeof(t_main));
+	calloc_stack(stack);
+	stack->len = (argc - 1);
 	create_list_if_str(stack, arg);
-    print_stack(stack);
-    if(is_sorted(stack) || is_duplicates(stack))
-    {
-        free_main(stack);
-        write(2, "Error\n", 6);
-        return(1);
-    }
+	position_numb(stack);
+	print_stack(stack);
+	if(stack->len < 6)
+		sorted_five(stack);
+	else
+		sorted_list(stack, argc);
     print_stack(stack);
     free_main(stack);
     return(0);

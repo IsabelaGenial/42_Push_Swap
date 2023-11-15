@@ -13,13 +13,18 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "./libfstonk/libft.h"
+# include 	"./libfstonk/libft.h"
+# include 	<unistd.h>
+
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 typedef struct s_node
 {
 	int				content;
 	struct s_node	*next;
 	struct s_node	*prev;
+	int				position;
 }					t_node;
 
 typedef struct s_stack
@@ -34,7 +39,6 @@ typedef struct s_main
 	t_stack     *A;
     t_stack     *B;
 	int         len;
-    int         pivot;
 }			t_main;
 
 void	create_list_if_str(t_main *stack, char **args);
@@ -60,4 +64,12 @@ void    free_main(t_main *stack);
 void    calloc_stack(t_main *stack);
 int     is_not_digit(char **c);
 int     is_duplicates(t_main *stack);
+void	check_duplicated(int argc, char *argv[]);
+void	check_overflow(int argc, char **arg);
+int		DCLL_lst_size(t_node *lst, t_node *head);
+void 	print_stack(t_main *stack);
+void	position_numb(t_main *stack);
+int		number_bits(int argc);
+void	sorted_list(t_main *stack, int argc);
+void	push_back(t_main *stack);
 #endif

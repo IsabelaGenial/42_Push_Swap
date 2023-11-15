@@ -16,8 +16,13 @@ void DCLL_lst_add_back( t_node *yong, t_main *stack)
 {
 	if (stack->A->stack == NULL)
 	{
-		stack->A->stack = yong;
-		stack->A->head = stack->A->stack;
+		stack->A->head = yong;
+		stack->A->tail = stack->A->head;
+		stack->A->head->next = stack->A->tail;
+		stack->A->head->prev = stack->A->tail;
+		stack->A->tail->next = stack->A->head;
+		stack->A->tail->prev = stack->A->head;
+		stack->A->stack = stack->A->head;
 	}
 	else
 	{
@@ -32,9 +37,7 @@ void DCLL_lst_add_back( t_node *yong, t_main *stack)
 
 t_node	*DCLL_lst_last(t_node *list, t_main *stack)
 {
-	if (list->next == NULL)
-		return (list);
-	while (list->next != stack->A->head && list->next != NULL)
+	while (list->next != stack->A->head)
 	{
 		list = list->next;
 	}
@@ -45,7 +48,7 @@ t_node	*DCLL_lstnew(int content)
 {
 	t_node 	*node;
 
-	node = (t_node *)malloc(sizeof(t_node));
+	node = ft_calloc(1, sizeof(t_node));
 	if (!node)
 		return (NULL);
 	node->content = content;
@@ -54,7 +57,7 @@ t_node	*DCLL_lstnew(int content)
 	return (node);
 }
 
-int	lstsize(t_node *lst, t_node *head)
+int	DCLL_lst_size(t_node *lst, t_node *head)
 {
     int	i;
 
