@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/* ************************************************************************* */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
@@ -12,20 +12,11 @@
 
 #include "push_swap.h"
 
-void	check_sort(char **args);
-
 int	main(int argc, char **arg )
 {
 	t_main	*stack;
 
-	if (argc < 3 || is_not_digit(arg))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	check_sort(arg);
-	check_overflow(argc, arg);
-	check_duplicated(argc, arg);
+	check_input(argc, arg);
 	stack = ft_calloc(1, sizeof(t_main));
 	calloc_stack(stack);
 	stack->len = (argc - 1);
@@ -41,8 +32,3 @@ int	main(int argc, char **arg )
 	return (0);
 }
 
-void	check_sort(char **arg)
-{
-	if (!is_sorted(arg))
-		exit(1);
-}
