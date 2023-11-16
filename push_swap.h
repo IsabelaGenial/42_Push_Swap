@@ -74,4 +74,5 @@ void	sorted_list(t_main *stack, int argc);
 void	push_back(t_main *stack);
 void	position_aux(t_main *stack, t_node *aux);
 void	radix_sort(t_main *stack, int bits);
+void	check_input(int argc, char **args);
 #endif
