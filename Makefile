@@ -1,4 +1,4 @@
-NAME			= Push_Swap
+NAME			= push_swap
 MANDATORY		=   push_swap.c moves_list_a.c DCLL_Function.c moves_list_b.c checks.c sort.c free.c Radix_Sort.c
 FILES			=	$(MANDATORY:%.c=%.o)
 BONUS			=
