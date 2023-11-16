@@ -41,7 +41,7 @@ int	find_position_max(t_main *stack)
 		if (major->content < stack->a->stack->content)
 		{
 			major = stack->a->stack;
-			pos++;
+			pos = i;
 		}
 		stack->a->stack = stack->a->stack->next;
 		i++;
@@ -65,7 +65,7 @@ int	find_position_min(t_main *stack)
 		if (major->content > stack->a->stack->content)
 		{
 			major = stack->a->stack;
-			pos++;
+			pos = i;
 		}
 		stack->a->stack = stack->a->stack->next;
 		i++;
@@ -83,6 +83,8 @@ int	is_not_digit(char **c)
 	while (c[i] != NULL)
 	{
 		j = 0;
+		if (c[i][j]  == '\0' && j == 0)
+			return (1);
 		while (c[i][j] != '\0')
 		{
 			if (j == 0 && c[i][j] == '-' && c[i][j++] == '\0')
