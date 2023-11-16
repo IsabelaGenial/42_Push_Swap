@@ -6,7 +6,7 @@
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:50:42 by igenial           #+#    #+#             */
-/*   Updated: 2023/11/14 23:09:35 by igenial          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:55:05 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	is_not_digit(char **c)
 	while (c[i] != NULL)
 	{
 		j = 0;
-		if (c[i][j]  == '\0' && j == 0)
+		if (c[i][j] == '\0' && j == 0)
 			return (1);
 		while (c[i][j] != '\0')
 		{

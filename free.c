@@ -6,7 +6,7 @@
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:51:56 by igenial           #+#    #+#             */
-/*   Updated: 2023/11/14 22:52:38 by igenial          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:54:15 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,12 @@ void	sorted_list(t_main *stack, int argc)
 	radix_sort(stack, bits);
 }
 
-void    check_input(int argc, char **arg)
+void	check_input(int argc, char **arg)
 {
-        if (argc < 3 || is_not_digit(arg))
-                exit(write(2, "Error\n", 6));
-        check_overflow(argc, arg);
-        check_duplicated(argc, arg);
-        if (!is_sorted(arg))
-                exit(1);
+	if (argc < 3 || is_not_digit(arg))
+		exit(write(2, "Error\n", 6));
+	check_overflow(argc, arg);
+	check_duplicated(argc, arg);
+	if (!is_sorted(arg))
+		exit(1);
 }
-
