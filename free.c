@@ -50,8 +50,12 @@ void	sorted_list(t_main *stack, int argc)
 
 void	check_input(int argc, char **arg)
 {
-	if (argc < 3 || is_not_digit(arg))
+	if (argc < 3)
+		exit(1);
+	if ( is_not_digit(arg))
 		exit(write(2, "Error\n", 6));
+	if (!is_sorted(arg))
+		exit(1);
 	check_overflow(argc, arg);
 	check_duplicated(argc, arg);
 	if (!is_sorted(arg))

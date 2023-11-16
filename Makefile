@@ -29,6 +29,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	make fclean -Clibfstonk
 
 re: fclean all
 
