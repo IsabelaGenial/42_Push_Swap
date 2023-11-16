@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/*....                                                                        */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -47,3 +47,14 @@ void	sorted_list(t_main *stack, int argc)
 	bits = number_bits (argc);
 	radix_sort(stack, bits);
 }
+
+void    check_input(int argc, char **arg)
+{
+        if (argc < 3 || is_not_digit(arg))
+                exit(write(2, "Error\n", 6));
+        check_overflow(argc, arg);
+        check_duplicated(argc, arg);
+        if (!is_sorted(arg))
+                exit(1);
+}
+
