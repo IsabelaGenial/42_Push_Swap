@@ -1,5 +1,5 @@
-NAME			= push_swap
-MANDATORY		=   push_swap.c moves_list_a.c DCLL_Function.c moves_list_b.c checks.c sort.c free.c Radix_Sort.c
+NAME			=	push_swap
+MANDATORY		=   push_swap.c moves_list_a.c dcll_function.c moves_list_b.c checks.c sort.c free.c radix_sort.c
 FILES			=	$(MANDATORY:%.c=%.o)
 BONUS			=
 HEADER			= push_swap.h
@@ -34,7 +34,7 @@ fclean: clean
 re: fclean all
 
 valgrind: all
-	$(VALGRIND) ./$(NAME) 12 325 96 7 4 2 6 0 3 8 56 1 45 23 5 1551 521 4693
+	$(VALGRIND) ./$(NAME) 3 6 9 8 5 2 1 4 7 
 
 gdb: all
 	$(GDB) ./$(NAME) 12 325 96 7 4 2 6 0 3 8 56 1 45 23 5 1551 521 4693
