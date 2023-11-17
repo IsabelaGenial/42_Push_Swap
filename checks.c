@@ -6,7 +6,7 @@
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:50:42 by igenial           #+#    #+#             */
-/*   Updated: 2023/11/17 17:30:50 by igenial          ###   ########.fr       */
+/*   Updated: 2023/11/17 18:22:36 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	check_duplicated(int argc, char **arg)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 1;
 	while (i < argc)
 	{
 		j = i + 1;
