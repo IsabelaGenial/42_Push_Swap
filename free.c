@@ -6,7 +6,7 @@
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:51:56 by igenial           #+#    #+#             */
-/*   Updated: 2023/11/16 12:54:15 by igenial          ###   ########.fr       */
+/*   Updated: 2023/11/17 17:33:35 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,10 @@ void	sorted_list(t_main *stack, int argc)
 
 void	check_input(int argc, char **arg)
 {
-	if (argc < 3)
+	if (argc < 2)
 		exit(1);
-	if ( is_not_digit(arg))
+	if (argc < 3 || is_not_digit(arg))
 		exit(write(2, "Error\n", 6));
-	if (!is_sorted(arg))
-		exit(1);
 	check_overflow(argc, arg);
 	check_duplicated(argc, arg);
 	if (!is_sorted(arg))
